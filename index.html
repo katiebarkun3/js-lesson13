@@ -1,0 +1,89 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>lesson15</title>
+        <style>
+            body {
+                display: flex;
+            }
+            div {
+                box-shadow: 10px 10px 10px gray;
+                margin: 0 auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .block1 {
+                width: 200px;
+                height: 200px;
+                background-color: green;
+            }
+            .block2 {
+                width: 150px;
+                height: 150px;
+                background-color: blue; 
+            }
+            .block3 {
+                width: 100px;
+                height: 100px;
+                background-color: goldenrod;
+            }
+            .color {
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="block1" id="block1">
+            <div class="block2" id="block2">
+                <div class="block3" id="block3"></div>
+            </div>
+        </div>
+        
+        <a href="https://www.youtube.com/">youtube</a>
+
+
+        <script>
+            /* contextmenu */
+            let a = document.querySelector('a');
+            a.addEventListener('click', function(){
+                event.preventDefault();
+                document.body.style.backgroundColor = 'green';
+            })
+
+            //1
+            /* let el = document.querySelector('.block');
+
+            el.addEventListener('click', changeColor);
+
+
+            function changeColor() {
+                event.target.style.backgroundColor = 'red';
+            } */
+
+            //2
+            let el1 = document.querySelector('.block1');
+            let el2 = document.querySelector('.block2');
+            let el3 = document.querySelector('.block3');
+
+            function blockAction(){
+                if(event.target != event.currentTarget) return;
+                event.target.classList.toggle('color');
+                console.log(event.target.id);
+                console.log(event.currentTarget.id);
+                console.log('=================');
+                /* event.stopPropagation(); */
+            };
+
+            el1.addEventListener('click', blockAction);
+            el2.addEventListener('click', blockAction);
+            el3.addEventListener('click', blockAction);
+
+        </script>
+
+    </body>
+    </html>
